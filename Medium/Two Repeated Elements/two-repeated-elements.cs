@@ -5,9 +5,13 @@
 class Solution {
     public int[] twoRepeated(int[] arr) {
         // code here
-        int n = arr.Length-2;
+        
         int[] result = new int[2];
         int idx = 0;
+        
+        //Time Complexity: O(n) and Aux. Space: O(n)
+        /*
+        int n = arr.Length-2;
         bool[] seen = new bool[n+1];
         for(int i=0; i<arr.Length; i++){
             if(seen[arr[i]]){
@@ -20,6 +24,19 @@ class Solution {
             }
             else{
                 seen[arr[i]] = true;
+            }
+        }
+        */
+        
+        //Time Complexity: O(n) and Aux. Space: O(1)
+        for(int i=0; i<arr.Length; i++){
+            int val = Math.Abs(arr[i]);
+            if(arr[val] < 0){
+                result[idx] = val;
+                idx++;
+            }
+            else{
+                arr[val] = -arr[val];
             }
         }
         
